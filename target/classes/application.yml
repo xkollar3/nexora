@@ -12,6 +12,13 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
+  ai:
+    mcp:
+      server:
+        name: nexora
+        type: SYNC
+        sse-message-endpoint: /mcp/messages
+
 # Modulith settings
 logging:
   level:

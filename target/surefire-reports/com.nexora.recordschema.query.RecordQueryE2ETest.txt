@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.nexora.recordschema.query.RecordQueryE2ETest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.531 s -- in com.nexora.recordschema.query.RecordQueryE2ETest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.852 s -- in com.nexora.recordschema.query.RecordQueryE2ETest
