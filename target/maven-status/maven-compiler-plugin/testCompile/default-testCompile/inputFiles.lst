@@ -1,0 +1,6 @@
+/home/xkollar3/projects/agrp-proj/src/test/java/com/nexora/BaseE2ETest.java
+/home/xkollar3/projects/agrp-proj/src/test/java/com/nexora/recordschema/assignagent/AssignAgentPolicyE2ETest.java
+/home/xkollar3/projects/agrp-proj/src/test/java/com/nexora/recordschema/createrecordschema/CreateRecordSchemaE2ETest.java
+/home/xkollar3/projects/agrp-proj/src/test/java/com/nexora/recordschema/customizeagent/CustomizeAgentE2ETest.java
+/home/xkollar3/projects/agrp-proj/src/test/java/com/nexora/recordschema/insertrecord/InsertRecordE2ETest.java
+/home/xkollar3/projects/agrp-proj/src/test/java/com/nexora/recordschema/query/RecordQueryE2ETest.java

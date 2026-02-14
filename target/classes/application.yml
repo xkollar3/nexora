@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: nexora
+
+  mongodb:
+    uri: mongodb://localhost:27017/nexora
+  data:
+    mongodb:
+      auto-index-creation: true
+
+  # Enable async event processing
+  main:
+    allow-bean-definition-overriding: true
+
+# Modulith settings
+logging:
+  level:
+    org.springframework.modulith: DEBUG
+    com.nexora: DEBUG
+
+server:
+  port: 8080
