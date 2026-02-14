@@ -9,6 +9,8 @@ import com.nexora.recordschema.customizeagent.CustomizeAgentCommand;
 import com.nexora.recordschema.insertrecord.InsertRecordCommand;
 import com.nexora.recordschema.insertrecord.InsertRecordResult;
 import com.nexora.recordschema.insertrecord.RecordInsertedEvent;
+import com.nexora.recordschema.updaterecord.RecordUpdatedEvent;
+import com.nexora.recordschema.updaterecord.UpdateRecordCommand;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -80,6 +82,48 @@ public class RecordSchema {
         );
 
         return new InsertRecordResult(record, event);
+    }
+
+    public RecordUpdatedEvent handle(UpdateRecordCommand command) {
+        validateUpdateFields(command.fields());
+
+        return new RecordUpdatedEvent(
+            UUID.randomUUID(),
+            Instant.now(),
+            command.recordId(),
+            this.id
+        );
+    }
+
+    private void validateUpdateFields(Map<String, Object> fields) {
+        var errors = new ArrayList<String>();
+
+        var columnsByName = columns.stream()
+            .collect(Collectors.toMap(ColumnDefinition::name, col -> col));
+
+        for (var entry : fields.entrySet()) {
+            var column = columnsByName.get(entry.getKey());
+            if (column == null) {
+                errors.add("Unknown column: " + entry.getKey());
+                continue;
+            }
+            if (entry.getValue() != null && !isCompatibleType(column.type(), entry.getValue())) {
+                errors.add("Invalid value for column '%s': expected %s".formatted(
+                    entry.getKey(), column.type()));
+            }
+        }
+
+        if (!errors.isEmpty()) {
+            throw new RecordValidationException(errors);
+        }
+    }
+
+    private boolean isCompatibleType(ColumnType type, Object value) {
+        return switch (type) {
+            case TEXT, DATE, REFERENCE -> value instanceof String;
+            case NUMBER -> value instanceof Number;
+            case BOOLEAN -> value instanceof Boolean;
+        };
     }
 
     private void validateFields(Map<String, Object> fields) {

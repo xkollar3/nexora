@@ -5,3 +5,4 @@
 /home/xkollar3/projects/agrp-proj/src/test/java/com/nexora/recordschema/deleterecord/DeleteRecordE2ETest.java
 /home/xkollar3/projects/agrp-proj/src/test/java/com/nexora/recordschema/insertrecord/InsertRecordE2ETest.java
 /home/xkollar3/projects/agrp-proj/src/test/java/com/nexora/recordschema/query/RecordQueryE2ETest.java
+/home/xkollar3/projects/agrp-proj/src/test/java/com/nexora/recordschema/updaterecord/UpdateRecordE2ETest.java

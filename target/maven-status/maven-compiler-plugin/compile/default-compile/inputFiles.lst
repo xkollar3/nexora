@@ -30,6 +30,10 @@
 /home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/shared/RecordSchema.java
 /home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/shared/RecordSchemaRepository.java
 /home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/shared/RecordValidationException.java
+/home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/updaterecord/RecordUpdatedEvent.java
+/home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/updaterecord/UpdateRecordCommand.java
+/home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/updaterecord/UpdateRecordController.java
+/home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/updaterecord/UpdateRecordHandler.java
 /home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/shared/command/Command.java
 /home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/shared/command/CommandDispatcher.java
 /home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/shared/command/CommandHandler.java
