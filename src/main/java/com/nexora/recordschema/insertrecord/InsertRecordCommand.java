@@ -11,6 +11,7 @@ public record InsertRecordCommand(
     Instant timestamp,
     UUID schemaId,
     String schemaName,
+    boolean agentAction,
     Map<String, Object> fields
 ) implements Command {
 }

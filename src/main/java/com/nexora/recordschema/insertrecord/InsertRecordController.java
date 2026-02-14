@@ -35,6 +35,7 @@ class InsertRecordController {
             Instant.now(),
             schema.getId(),
             schemaName,
+            false,
             fields
         );
 

@@ -11,6 +11,10 @@
 /home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/customizeagent/CustomizeAgentCommand.java
 /home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/customizeagent/CustomizeAgentController.java
 /home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/customizeagent/CustomizeAgentHandler.java
+/home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/deleterecord/DeleteRecordCommand.java
+/home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/deleterecord/DeleteRecordController.java
+/home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/deleterecord/DeleteRecordHandler.java
+/home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/deleterecord/RecordDeletedEvent.java
 /home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/insertrecord/InsertRecordCommand.java
 /home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/insertrecord/InsertRecordController.java
 /home/xkollar3/projects/agrp-proj/src/main/java/com/nexora/recordschema/insertrecord/InsertRecordHandler.java

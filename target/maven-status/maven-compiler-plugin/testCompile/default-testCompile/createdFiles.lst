@@ -1,6 +1,7 @@
 com/nexora/recordschema/customizeagent/CustomizeAgentE2ETest.class
 com/nexora/recordschema/assignagent/AssignAgentPolicyE2ETest.class
 com/nexora/BaseE2ETest.class
-com/nexora/recordschema/query/RecordQueryE2ETest.class
 com/nexora/recordschema/insertrecord/InsertRecordE2ETest.class
 com/nexora/recordschema/createrecordschema/CreateRecordSchemaE2ETest.class
+com/nexora/recordschema/deleterecord/DeleteRecordE2ETest.class
+com/nexora/recordschema/query/RecordQueryE2ETest.class

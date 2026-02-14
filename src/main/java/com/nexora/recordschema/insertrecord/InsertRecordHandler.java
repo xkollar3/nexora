@@ -23,6 +23,11 @@ class InsertRecordHandler implements CommandHandler<InsertRecordCommand, UUID> {
             .orElseThrow(() -> new IllegalArgumentException(
                 "Schema not found: " + command.schemaId()));
 
+        if (command.agentAction() && !schema.getAgentOperations().createEnabled()) {
+            throw new IllegalStateException(
+                "Agent is not allowed to insert records into schema: " + command.schemaName());
+        }
+
         var result = schema.handle(command);
         mongoTemplate.save(result.record(), command.schemaName());
         eventPublisher.publish(result.event());

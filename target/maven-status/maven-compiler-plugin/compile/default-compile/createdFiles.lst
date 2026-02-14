@@ -7,6 +7,7 @@ com/nexora/recordschema/insertrecord/RecordInsertedEvent.class
 com/nexora/recordschema/customizeagent/CustomizeAgentCommand.class
 com/nexora/shared/event/DomainEvent.class
 com/nexora/shared/command/Command.class
+com/nexora/recordschema/deleterecord/DeleteRecordController.class
 com/nexora/recordschema/shared/ColumnType.class
 com/nexora/recordschema/assignagent/AssignAgentPolicy.class
 com/nexora/recordschema/shared/RecordSchema.class
@@ -15,10 +16,12 @@ com/nexora/recordschema/createrecordschema/RecordSchemaCreatedEvent.class
 com/nexora/recordschema/insertrecord/InsertRecordHandler.class
 com/nexora/shared/package-info.class
 com/nexora/recordschema/insertrecord/InsertRecordCommand.class
+com/nexora/recordschema/deleterecord/DeleteRecordHandler.class
 com/nexora/shared/event/EventPublisher.class
 com/nexora/recordschema/shared/RecordValidationException.class
 com/nexora/recordschema/query/RecordQueryController.class
 com/nexora/recordschema/assignagent/SystemPromptGenerator.class
+com/nexora/recordschema/deleterecord/DeleteRecordCommand.class
 com/nexora/NexoraApplication.class
 com/nexora/recordschema/createrecordschema/CreateRecordSchemaController$CreateRecordSchemaRequest.class
 com/nexora/shared/command/CommandHandler.class
@@ -37,6 +40,7 @@ com/nexora/recordschema/createrecordschema/CreateRecordSchemaController$CreateRe
 com/nexora/recordschema/createrecordschema/CreateRecordSchemaHandler.class
 com/nexora/shared/query/Query.class
 com/nexora/recordschema/customizeagent/CustomizeAgentController$CustomizeAgentRequest.class
+com/nexora/recordschema/deleterecord/RecordDeletedEvent.class
 com/nexora/recordschema/createrecordschema/CreateRecordSchemaCommand.class
 com/nexora/shared/command/CommandDispatcher.class
 com/nexora/shared/query/QueryHandler.class
