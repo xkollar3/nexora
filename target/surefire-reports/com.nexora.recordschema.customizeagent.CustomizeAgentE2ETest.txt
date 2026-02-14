@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.nexora.recordschema.customizeagent.CustomizeAgentE2ETest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.108 s -- in com.nexora.recordschema.customizeagent.CustomizeAgentE2ETest
