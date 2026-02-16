@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
-import java.time.Instant;
 import java.util.UUID;
 
 @Component
@@ -27,10 +26,7 @@ class DeleteRecordHandler implements CommandHandler<DeleteRecordCommand, UUID> {
             .orElseThrow(() -> new IllegalArgumentException(
                 "Schema not found: " + command.schemaId()));
 
-        if (command.agentAction() && !schema.getAgentOperations().deleteEnabled()) {
-            throw new IllegalStateException(
-                "Agent is not allowed to delete records from schema: " + command.schemaName());
-        }
+        var event = schema.handle(command);
 
         var query = new Query(Criteria.where("_id").is(command.recordId()));
         var result = mongoTemplate.remove(query, Record.class, command.schemaName());
@@ -39,12 +35,6 @@ class DeleteRecordHandler implements CommandHandler<DeleteRecordCommand, UUID> {
             throw new IllegalArgumentException("Record not found: " + command.recordId());
         }
 
-        var event = new RecordDeletedEvent(
-            UUID.randomUUID(),
-            Instant.now(),
-            command.recordId(),
-            command.schemaId()
-        );
         eventPublisher.publish(event);
 
         return command.recordId();

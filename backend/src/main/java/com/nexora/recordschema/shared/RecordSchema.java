@@ -6,6 +6,8 @@ import com.nexora.recordschema.createrecordschema.CreateRecordSchemaCommand;
 import com.nexora.recordschema.createrecordschema.RecordSchemaCreatedEvent;
 import com.nexora.recordschema.customizeagent.AgentCustomizedEvent;
 import com.nexora.recordschema.customizeagent.CustomizeAgentCommand;
+import com.nexora.recordschema.deleterecord.DeleteRecordCommand;
+import com.nexora.recordschema.deleterecord.RecordDeletedEvent;
 import com.nexora.recordschema.insertrecord.InsertRecordCommand;
 import com.nexora.recordschema.insertrecord.InsertRecordResult;
 import com.nexora.recordschema.insertrecord.RecordInsertedEvent;
@@ -71,6 +73,10 @@ public class RecordSchema {
     }
 
     public InsertRecordResult handle(InsertRecordCommand command) {
+        if (command.agentAction() && !agentOperations.createEnabled()) {
+            throw new IllegalStateException(
+                "Agent is not allowed to insert records into schema: " + this.name);
+        }
         validateFields(command.fields());
 
         var record = new Record(UUID.randomUUID(), command.fields());
@@ -84,7 +90,25 @@ public class RecordSchema {
         return new InsertRecordResult(record, event);
     }
 
+    public RecordDeletedEvent handle(DeleteRecordCommand command) {
+        if (command.agentAction() && !agentOperations.deleteEnabled()) {
+            throw new IllegalStateException(
+                "Agent is not allowed to delete records from schema: " + this.name);
+        }
+
+        return new RecordDeletedEvent(
+            UUID.randomUUID(),
+            Instant.now(),
+            command.recordId(),
+            this.id
+        );
+    }
+
     public RecordUpdatedEvent handle(UpdateRecordCommand command) {
+        if (command.agentAction() && !agentOperations.updateEnabled()) {
+            throw new IllegalStateException(
+                "Agent is not allowed to update records in schema: " + this.name);
+        }
         validateUpdateFields(command.fields());
 
         return new RecordUpdatedEvent(

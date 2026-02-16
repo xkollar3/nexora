@@ -27,11 +27,6 @@ class UpdateRecordHandler implements CommandHandler<UpdateRecordCommand, UUID> {
             .orElseThrow(() -> new IllegalArgumentException(
                 "Schema not found: " + command.schemaId()));
 
-        if (command.agentAction() && !schema.getAgentOperations().updateEnabled()) {
-            throw new IllegalStateException(
-                "Agent is not allowed to update records in schema: " + command.schemaName());
-        }
-
         var event = schema.handle(command);
 
         var query = new Query(Criteria.where("_id").is(command.recordId()));
