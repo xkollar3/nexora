@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import { useRecordSchemas } from '@/api/record-schemas';
+import { useRecordEvents } from '@/api/use-record-events';
 import { EmptyState } from '@/pages/empty-state';
 import { SchemaTabs } from '@/pages/schema-tabs';
 import { RecordsTable } from '@/pages/records-table';
@@ -12,6 +13,12 @@ export function DashboardPage() {
   const navigate = useNavigate();
   const { data: schemas, isLoading } = useRecordSchemas();
   const [activeSchema, setActiveSchema] = useState<string | null>(null);
+
+  const schemaIds = useMemo(
+    () => (schemas ?? []).map((s) => s.id),
+    [schemas],
+  );
+  useRecordEvents(schemaIds);
 
   if (isLoading) {
     return (

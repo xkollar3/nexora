@@ -1,6 +1,6 @@
 services:
   mongodb:
-    image: mongodb/mongodb-atlas-local:8.0
+    image: mongo:8
     ports:
       - "27017:27017"
     volumes:

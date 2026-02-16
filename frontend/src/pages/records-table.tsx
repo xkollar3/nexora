@@ -7,8 +7,10 @@ import {
   Search,
   Loader2,
   Inbox,
+  Trash2,
 } from 'lucide-react';
-import { useRecords, type RecordSchema } from '@/api/record-schemas';
+import { useRecords, useDeleteRecord, type RecordSchema } from '@/api/record-schemas';
+import { InsertRecordDialog } from '@/pages/insert-record-dialog';
 import {
   Table,
   TableBody,
@@ -46,6 +48,8 @@ export function RecordsTable({ schema }: RecordsTableProps) {
     PAGE_SIZE,
     appliedFilter,
   );
+
+  const deleteRecord = useDeleteRecord(schema.name);
 
   const handleFilterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -91,6 +95,8 @@ export function RecordsTable({ schema }: RecordsTableProps) {
         {isFetching && !isLoading && (
           <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
         )}
+
+        <InsertRecordDialog schema={schema} />
       </div>
 
       {/* Table */}
@@ -108,6 +114,7 @@ export function RecordsTable({ schema }: RecordsTableProps) {
                   </div>
                 </TableHead>
               ))}
+              <TableHead className="w-10 pr-6" />
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -119,11 +126,12 @@ export function RecordsTable({ schema }: RecordsTableProps) {
                       <Skeleton className="h-5 w-full" />
                     </TableCell>
                   ))}
+                  <TableCell className="pr-6" />
                 </TableRow>
               ))
             ) : !data || data.empty ? (
               <TableRow>
-                <TableCell colSpan={columns.length} className="h-48 pl-6 pr-6">
+                <TableCell colSpan={columns.length + 1} className="h-48 pl-6 pr-6">
                   <EmptyRecords hasFilter={!!appliedFilter} />
                 </TableCell>
               </TableRow>
@@ -135,6 +143,15 @@ export function RecordsTable({ schema }: RecordsTableProps) {
                       {formatValue(record.fields[col.name])}
                     </TableCell>
                   ))}
+                  <TableCell className="pr-6">
+                    <Button
+                      size="icon-xs"
+                      variant="ghost"
+                      onClick={() => deleteRecord.mutate(record.id)}
+                    >
+                      <Trash2 className="w-3.5 h-3.5 text-muted-foreground" />
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))
             )}

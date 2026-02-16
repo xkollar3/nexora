@@ -100,3 +100,33 @@ export function useCreateRecordSchema() {
     },
   });
 }
+
+export function useInsertRecord(schemaName: string) {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (fields: Record<string, unknown>) => {
+      const { data } = await apiClient.post<{ id: string }>(
+        `/records/${schemaName}`,
+        fields,
+      );
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['records'] });
+    },
+  });
+}
+
+export function useDeleteRecord(schemaName: string) {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (recordId: string) => {
+      await apiClient.delete(`/records/${schemaName}/${recordId}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['records'] });
+    },
+  });
+}
